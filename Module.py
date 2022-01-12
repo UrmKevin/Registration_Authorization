@@ -1,12 +1,12 @@
-loginList = ["Kevin"]
-passwordList = ["Urm"]
-str0 = ".,:;!_*-+()/#¤%&"
-str1 = '0123456789'
-str2 = 'qwertyuiopasdfghjklzxcvbnm'
-str3 = str2.upper()
+#str0 = ".,:;!_*-+()/#¤%&"
+#str1 = '0123456789'
+#str2 = 'qwertyuiopasdfghjklzxcvbnm'
+#str3 = str2.upper()
 
-def Authorization():
+def Authorization(ll,pl):
     '''It allows you to input your login and password to enter on your 'account'
+    :param list ll: List of logins
+    :param list pl: List of password
     :rtype:str
     '''
     login=0
@@ -21,16 +21,18 @@ def Authorization():
         try:
             password = input("Password: \n-->")
         except: ValueError
-    if login in loginList and password in passwordList:
-        if loginList.index(login)==passwordList.index(password):
+    if login in ll and password in pl:
+        if ll.index(login)==pl.index(password):
             ans = "one"
     else:
         ans = "zero"
     return ans
 
 
-def Registration():
+def Registration(ll,pl):
     '''It allows you to create new login and password which will be added to login and password lists
+    :param list ll: List of logins
+    :param list pl: List of password
     :rtype:str
     '''
     newLogin=0
@@ -41,11 +43,6 @@ def Registration():
             newLogin = input("\nPlease write new login: \n-->")
         except: ValueError
     
-    #while newLogin in loginList:
-    #    try:
-    #        newLogin = input("\nThis login is alredy exist\nPlease write new login: \n-->")
-    #    except: ValueError
-    
     while True:
         while type(newPassword)!=str:
             try:
@@ -54,11 +51,13 @@ def Registration():
             except: ValueError
         break
 
-    if newLogin in loginList and newPassword in passwordList:
-        if loginList.index(newLogin)==passwordList.index(newPassword):
+    if newLogin in ll and newPassword in pl:
+        if ll.index(newLogin)==pl.index(newPassword):
             ans = "zero"
+        else:
+            ans = "one"
     else:
-        loginList.append(newLogin)
-        passwordList.append(newPassword)
+        ll.append(newLogin)
+        pl.append(newPassword)
         ans = "one"
     return ans
