@@ -56,8 +56,44 @@ def Registration(ll,pl):
             ans = "zero"
         else:
             ans = "one"
+            rida_salvestamine('Logins.txt',newLogin)
+            rida_salvestamine('Passwords.txt',newPassword)
+            ll.append(newLogin)
+            pl.append(newPassword)
     else:
+        rida_salvestamine('Logins.txt',newLogin)
+        rida_salvestamine('Passwords.txt',newPassword)
         ll.append(newLogin)
         pl.append(newPassword)
         ans = "one"
     return ans
+
+
+def Failist_Lugemine(f:str,l:list):
+    '''
+    :param file f: 
+    :param list l: 
+    :rtype:list
+    '''
+    file=open(f,'r')
+    for rida in file:
+        l.append(rida.strip())
+    file.close()
+    return l
+
+
+def failisse_salvestamine(f:str,l:list):
+    '''Loetelu salvestame failisse
+    '''
+    file=open(f,'w')
+    for e in l:
+        file.write(e+'\n')
+    file.close()
+
+
+def rida_salvestamine(f:str,rida:str):
+    '''Üks sõna või lause(rida) salvestamine filisse
+    '''
+    file=open(f,'a')
+    file.write(rida+'\n')
+    file.close()

@@ -1,6 +1,9 @@
 from Module import*
-loginList = ["Kevin"]
-passwordList = ["Urm"]
+
+loginList = []
+passwordList = []
+loginList = Failist_Lugemine('Logins.txt',loginList)
+passwordList = Failist_Lugemine('Passwords.txt',passwordList)
 
 way = ""
 while True:
